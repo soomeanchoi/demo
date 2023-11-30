@@ -4,6 +4,9 @@ package com.example.demo;
 import com.example.demo.post.PostMapper;
 import com.example.demo.post.PostRequest;
 import com.example.demo.post.PostResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,5 +31,18 @@ public class PostMapperTest {
         List<PostResponse> posts = postMapper.findAll();
         System.out.println("전체 게시글 개수는 : " + posts.size() + "개입니다.");
     }
+
+    @Test
+    void findById() {
+        PostResponse post = postMapper.findById(1L);
+        try {
+            String postJson = new ObjectMapper().registerModule(new JavaTimeModule()).writeValueAsString(post);
+            System.out.println(postJson);
+
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }
