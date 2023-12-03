@@ -20,10 +20,13 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'com.zaxxer:HikariCP:2.5.1'
-	implementation 'org.mybatis:mybatis:3.5.3' // MyBatis 라이브러리
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1' // MyBatis-Spring 라이브러리
+	implementation 'org.mybatis:mybatis:3.5.3'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1'
 	implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
 	implementation 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	runtimeOnly 'com.h2database:h2'
 }
 
 tasks.named('test') {
